@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Mensagem extends Model
 {
     use HasFactory;
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+    public function topicos() {
+        return $this->belongsToMany(Topico::class)->withTimestamps();
+    }
 }
