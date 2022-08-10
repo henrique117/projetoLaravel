@@ -14,7 +14,8 @@ class TopicoController extends Controller
      */
     public function index()
     {
-        //
+        $topicos = Topico::all();
+        return view("restrict/topico", compact('topicos'));
     }
 
     /**
@@ -24,7 +25,7 @@ class TopicoController extends Controller
      */
     public function create()
     {
-        //
+        return view("restrict/topico/create");
     }
 
     /**
@@ -35,7 +36,15 @@ class TopicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'topico' => 'required|max:255',
+        ]);
+        if ($validated) {
+            $topico = new Topico();
+            $topico->topico = $request->get('topico');
+            $topico->save();
+            return redirect('topico');
+        }
     }
 
     /**
@@ -57,7 +66,7 @@ class TopicoController extends Controller
      */
     public function edit(Topico $topico)
     {
-        //
+        return view("restrict/topico/edit", compact("topico"));
     }
 
     /**
@@ -69,7 +78,14 @@ class TopicoController extends Controller
      */
     public function update(Request $request, Topico $topico)
     {
-        //
+        $validated = $request->validate([
+            'topico' => 'required|max:255',
+        ]);
+        if ($validated) {
+            $topico->topico = $request->get('topico');
+            $topico->save();
+            return redirect('topico');
+        }
     }
 
     /**
@@ -80,6 +96,7 @@ class TopicoController extends Controller
      */
     public function destroy(Topico $topico)
     {
-        //
+        $topico->delete();
+        return redirect("topico");
     }
 }

@@ -30,7 +30,7 @@
                 @endif
             </td>
             <td>
-                <a href="{{route('mensagem.edit', $mensagem->id}}" class="button">Editar</a>
+                <a href="{{route('mensagem.edit', $mensagem->id)}}" class="button">Editar</a>
             </td>
             <td>
                 <form method="POST" action="{{route('mensagem.destroy', $mensagem->id)}}" onsubmit="return confrim('Tem certeza?')">

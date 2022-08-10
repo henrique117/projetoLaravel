@@ -3,8 +3,7 @@
     margin: 0;
     outline: 0;
     box-sizing: border-box;
-}
-
+   }
 :root {
     --black: #000000;
     --white: #ffffff;
@@ -15,43 +14,34 @@
     --third: #ffb74d;
     --thirdLight: #ffe9ca;
 }
-
 header {
     display: flex;
-    border-bottom: 0.5rem solid
-    var(--secondary);
+    border-bottom: 0.5rem solid var(--secondary);
 }
-
 header picture img {
-    height: 6rem;
+    width: 20%;
 }
-
 header nav {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
-
 header nav ul {
     list-style-type: none;
     display: flex;
     align-items: center;
 }
-
 header ul li {
     margin: 0 1rem;
 }
-
 header ul li a {
     text-decoration: none;
     color: var(--primary);
 }
-
 main {
     min-height: 80vh;
     margin: 0.5rem;
 }
-
 /* Botão */
 .button {
     display: flex;
@@ -67,27 +57,34 @@ main {
     width: 7rem;
     cursor: pointer;
 }
-
 /* Tabela */
 main > table {
     width: 100%;
     border-collapse: collapse;
 }
-
 main > table tr td, main > table tr th {
     border: 1px solid var(--black);
     padding: 1rem;
 }
-
 /* Formulário */
 form div {
     display: grid;
     grid-template-columns: 10rem auto;
     margin: 1rem 0;
 }
-
 form div div.sub {
     display: grid;
     grid-template-columns: 2rem auto;
     margin: 1rem 0;
+}
+form div label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+form div input, form div textarea {
+    padding: 0.3rem;
+    border: 0.2rem solid var(--primary);
+    border-radius: 0.5rem;
+    font-size: 1rem;
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Mensagem;
 use Illuminate\Http\Request;
+use App\Models\Topico;
+use Illuminate\Support\Facades\Auth;
 
 class MensagemController extends Controller
 {
@@ -14,7 +16,8 @@ class MensagemController extends Controller
      */
     public function index()
     {
-        //
+        $mensagens = Mensagem::all();
+        return view("restrict/mensagem", compact('mensagens'));
     }
 
     /**
@@ -24,7 +27,8 @@ class MensagemController extends Controller
      */
     public function create()
     {
-        //
+        $topicos = Topico::all();
+        return view("restrict/mensagem/create", compact('topicos'));
     }
 
     /**
@@ -35,7 +39,20 @@ class MensagemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'titulo' => 'required|max:255',
+            'mensagem' => 'required|max:255',
+            'topico' => 'array|exists:App\Models\Topico,id'
+        ]);
+        if ($validated){
+            $mensagem = new Mensagem();
+            $mensagem->user_id = Auth::User()->id;
+            $mensagem->titulo = $request->get('titulo');
+            $mensagem->mensagem = $request->get('mensagem');
+            $mensagem->save();
+            $mensagem->topicos()->attach($request->get('topico'));
+            //return redirect('mensagem');
+        }
     }
 
     /**
@@ -57,7 +74,8 @@ class MensagemController extends Controller
      */
     public function edit(Mensagem $mensagem)
     {
-        //
+        $topicos = Topico::all();
+        return view("restrict/mensagem/edit", compact('topicos', 'mensagem'));
     }
 
     /**
@@ -69,7 +87,19 @@ class MensagemController extends Controller
      */
     public function update(Request $request, Mensagem $mensagem)
     {
-        //
+        $validated = $request->validate([
+            'titulo' => 'required|max:255',
+            'mensagem' => 'required|max:255',
+            'topico' => 'array|exists:App\Models\Topico,id'
+        ]);
+        if ($validated){
+            $mensagem->titulo = $request->get('titulo');
+            $mensagem->mensagem = $request->get('mensagem');
+            $mensagem->save();
+            $mensagem->topicos()->sync($request->get('topicos'));
+            return redirect('mensagem');
+        }
+
     }
 
     /**
@@ -80,6 +110,7 @@ class MensagemController extends Controller
      */
     public function destroy(Mensagem $mensagem)
     {
-        //
+        $mensagem->delete();
+        return redirect("mensagem");
     }
 }
