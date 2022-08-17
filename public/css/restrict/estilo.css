@@ -3,7 +3,7 @@
     margin: 0;
     outline: 0;
     box-sizing: border-box;
-   }
+}
 :root {
     --black: #000000;
     --white: #ffffff;
@@ -16,10 +16,11 @@
 }
 header {
     display: flex;
-    border-bottom: 0.5rem solid var(--secondary);
+    border-bottom: 0.5rem solid
+    var(--secondary);
 }
 header picture img {
-    width: 20%;
+    height: 6rem;
 }
 header nav {
     width: 100%;
@@ -87,4 +88,8 @@ form div input, form div textarea {
     border: 0.2rem solid var(--primary);
     border-radius: 0.5rem;
     font-size: 1rem;
+}
+.showImg{
+    width: 5rem;
+    height: 5rem;
 }
