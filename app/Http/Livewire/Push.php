@@ -15,8 +15,8 @@ class Push extends Component
     public $title = "";
 
     protected $rules = [
-        'title' => 'required|min:5|max255',
-        'body' => 'required|min:5|max255',
+        'title' => 'required|min:5|max:255',
+        'body' => 'required|min:5|max:255',
     ];
 
     public function render()
@@ -38,7 +38,7 @@ class Push extends Component
         $aviso->body = $this->body;
         $aviso->save();
 
-        $this-limpar();
+        $this->limpar();
     }
 
     public function edit(Aviso $aviso)

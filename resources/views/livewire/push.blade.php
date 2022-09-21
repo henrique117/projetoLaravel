@@ -27,7 +27,7 @@
                 <td>{{$aviso->title}}</td>
                 <td>{{$aviso->body}}</td>
                 <td>
-                    <button type="button" class="bg-blue-500 rounded-lg p-1" wire:click="edit({{$aviso->id)}}">Editar</button>
+                    <button type="button" class="bg-blue-500 rounded-lg p-1" wire:click="edit({{$aviso->id}})">Editar</button>
                 </td>
                 <td>
                     <button type="button" class="bg-red-500 rounded-lg p-1" wire:click="destroy({{$aviso->id}})">Remover</button>
