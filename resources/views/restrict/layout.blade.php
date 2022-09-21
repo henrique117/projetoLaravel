@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reuse</title>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/restrict/estilo.css') }}">
 </head>
 
@@ -21,6 +22,9 @@
                 </li>
                 <li>
                     <a href="{{url('/dashboard')}}">Usuários</a>
+                </li>
+                <li>
+                    <a href="{{url('/avisos')}}">Avisos</a>
                 </li>
             </ul>
         </nav>

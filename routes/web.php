@@ -30,4 +30,5 @@ Route::middleware([
 
     Route::resource("mensagem", MensagemController::class);
     Route::resource("topico", TopicoController::class);
+    Route::get("avisos", Push::class);
 });
