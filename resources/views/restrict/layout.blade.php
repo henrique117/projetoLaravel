@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <head>
+    <header>
         <picture>
             <img src="{{asset('img/logo.png')}}" alt="Logo" />
         </picture>
@@ -28,7 +28,7 @@
                 </li>
             </ul>
         </nav>
-    </head>
+    </header>
 
     <main>
         @yield('content')

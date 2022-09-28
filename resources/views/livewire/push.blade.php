@@ -12,7 +12,7 @@
         <button type="submit" class="bg-primary rounded-lg p-2">Enviar</button>
         <button type="button" class="bg-secondary rounded-lg p-2" wire:click="limpar()">Limpar</button>
     </form>
-    <table>
+    <table class="w-full">
         <thead>
             <tr class="border">
                 <th>Título</th>
@@ -24,12 +24,12 @@
         <tbody>
             @foreach($avisos as $aviso)
             <tr class="border">
-                <td>{{$aviso->title}}</td>
-                <td>{{$aviso->body}}</td>
-                <td>
+                <td class="text-center">{{$aviso->title}}</td>
+                <td class="text-center">{{$aviso->body}}</td>
+                <td class="text-center">
                     <button type="button" class="bg-blue-500 rounded-lg p-1" wire:click="edit({{$aviso->id}})">Editar</button>
                 </td>
-                <td>
+                <td class="text-center">
                     <button type="button" class="bg-red-500 rounded-lg p-1" wire:click="destroy({{$aviso->id}})">Remover</button>
                 </td>
             </tr>
