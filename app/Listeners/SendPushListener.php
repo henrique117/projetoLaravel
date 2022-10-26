@@ -5,8 +5,9 @@ namespace App\Listeners;
 use App\Events\AvisoUserCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Http;
 
-class SendPushListener
+class SendPushListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -27,7 +28,7 @@ class SendPushListener
     public function handle(AvisoUserCreated $event)
     {
         $avisoUser = $event->getAvisoUser();
-        Http::post('htps://exp.host/--/api/v2/push/send', [
+        Http::post('https://exp.host/--/api/v2/push/send', [
             'to' => $avisoUser->user->token,
             'title' => $avisoUser->aviso->title,
             'body' => $avisoUser->aviso->body
