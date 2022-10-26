@@ -9,4 +9,18 @@ class AvisoUser extends Model
 {
     protected $table = 'aviso_user';
     use HasFactory;
+
+    protected $dispatchesEvents = [
+        'created' => AvisoUserCreated::class
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function aviso()
+    {
+        return $this->belongsTo(Aviso::class);
+    }
 }
